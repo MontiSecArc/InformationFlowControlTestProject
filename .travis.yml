@@ -13,6 +13,7 @@ before_install:
 - docker pull thomasbuning/msa_intellij_docker_image
 
 script:
+- ./gradlew clean build
 - docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project -v2 -d /project/src"
 
 deploy:
