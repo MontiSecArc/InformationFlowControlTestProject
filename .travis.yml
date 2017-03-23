@@ -1,6 +1,9 @@
 sudo: required
 
-language: ruby
+language: java
+
+jdk:
+  - oraclejdk8
 
 services:
   - docker
