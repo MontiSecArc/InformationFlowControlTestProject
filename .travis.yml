@@ -7,5 +7,6 @@ services:
 
 before_install:
 - docker pull thomasbuning/msa_intellij_docker_image
+
+script:
 - docker ps -a
-- docker run thomasbuning/msa_intellij_docker_image
