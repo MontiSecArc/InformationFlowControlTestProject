@@ -8,7 +8,4 @@ services:
 before_install:
 - docker pull thomasbuning/msa_intellij_docker_image
 - docker ps -a
-
-script:
-- docker run -v $TRAVIS_BUILD_DIR:/ thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /
-/Default.xml /results-dir -v2"
+- docker run thomasbuning/msa_intellij_docker_image
