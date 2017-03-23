@@ -5,9 +5,24 @@ language: ruby
 services:
   - docker
 
+before_deploy:
+  - export RELEASE_ZIP_FILE=$(ls $TRAVIS_BUILD_DIR/GraphQuery.xml)
+  - echo "deploying $RELEASE_ZIP_FILE to GitHub releases"
+
 before_install:
 - docker pull thomasbuning/msa_intellij_docker_image
 
 script:
 - docker ps -a
 - docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project -v2"
+
+deploy:
+  provider: releases
+  api_key:
+    secure: u3EFgHKtqhj/YCPmb39nqzRFlZ+LObxSVliDgx47v5KGIAOqzt5GlCvpP4S8x4oOr2vZjTx9J8/xph3Cv+L9CJXd6lTQO8WSfnNESFvP7dCBku+aVLLuxw4phjayblnQe0o5xeUIZon2ybJK1opLbRJ1hfgN8sfOo+g8YUcM5su0inwLlHaLA+aH6Bsx9RG7yS7COLUo6v4dKUZYBjohDuoMgy4YXpP4P+745fwoqgHtWnBKolc9qVXa7yqYjzcOmElLiXlZxRLJgd0UdwpHKLR3E3jH18xaEt0/VznWbDM66JFLpa7dgvurAK25U8n0fVVE2ZovwjVYFBVomh7S6c6HXirbIEiA0t8QIDokq+Gy10N6loz/7nVYG/MTuVtvpfsI5a1ScyaU1qU1zKWoHiSAnGEy4SADETgh/0rNeofSsddiOFxI+7b4/6756z5cB/8b18hTDLc2Q7O/SY31KrzaFH6iWsgd+wLs1VXliVx8yHl0jeVS1xzHMS6uy1FB8LZ79ZZ+LlVN0bk4Z5P0h0Hd+oWIdUt02+T+bY3PXp9UOdnbHxRi2UzW5yng26n/+QM51GOY7OpNpZ76mJpe1BzFvCoeBPODl9qDQRBvNjQKl8FWadycCNhednrrv9K5UGZEPb5iRvdAfaw/fQOjZ/7WqUMMbYADlkU6EimuFN0=
+  file: "${RELEASE_ZIP_FILE}"
+  file_glob: true
+  skip_cleanup: true
+  on:
+    repo: MontiSecArc/intellij_msa_language_plugin
+    tags: true
