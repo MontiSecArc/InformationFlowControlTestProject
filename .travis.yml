@@ -10,3 +10,4 @@ before_install:
 
 script:
 - docker ps -a
+- docker run -v $TRAVIS_BUILD_DIR:/ thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh / /Default.xml /results-dir -v2"
