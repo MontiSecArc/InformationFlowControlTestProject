@@ -12,10 +12,10 @@ before_install:
 - docker pull thomasbuning/msa_intellij_docker_image
 
 script:
-- ./gradlew clean build
-- ./gradlew dependencies
+- $TRAVIS_BUILD_DIR/gradlew clean build
+- $TRAVIS_BUILD_DIR/gradlew dependencies
 - mkdir $TRAVIS_BUILD_DIR/results
-- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src"
+- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src && cp /home/developer/.IdeaIC2017.1/system/log/idea.log $CI_PROJECT_DIR/results/idea.log"
 - ls $TRAVIS_BUILD_DIR
 - ls $TRAVIS_BUILD_DIR/results
-- xsltproc $TRAVIS_BUILD_DIR/GraphQuery.xsl $TRAVIS_BUILD_DIR/results/GraphQuery.xml > $TRAVIS_BUILD_DIR/results/GraphQuery.xhtml
+- cat $TRAVIS_BUILD_DIR/results/idea.log
