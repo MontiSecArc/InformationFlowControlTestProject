@@ -13,6 +13,9 @@ before_install:
 
 script:
 - ./gradlew clean build
-- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "sudo apt-get install xsltproc && mkdir /project/results && /opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src && xsltproc /project/GraphQuery.xsl /project/results/GraphQuery.xml > /project/results/GraphQuery.xhtml"
+- mkdir $TRAVIS_BUILD_DIR/results
+- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src"
 - ls $TRAVIS_BUILD_DIR
 - ls $TRAVIS_BUILD_DIR/results
+- xsltproc /project/GraphQuery.xsl /project/results/GraphQuery.xml > /project/results/GraphQuery.xhtml
+- cat /home/developer/.IdeaIC2017.1/system/log/idea.log
