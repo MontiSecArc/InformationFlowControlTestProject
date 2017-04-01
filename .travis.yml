@@ -15,7 +15,7 @@ script:
 - $TRAVIS_BUILD_DIR/gradlew clean build
 - $TRAVIS_BUILD_DIR/gradlew dependencies
 - mkdir $TRAVIS_BUILD_DIR/results
-- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src && cp /home/developer/.IdeaIC2017.1/system/log/idea.log $CI_PROJECT_DIR/results/idea.log"
+- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src && cp /home/developer/.IdeaIC2017.1/system/log/idea.log /project/results/idea.log"
 - ls $TRAVIS_BUILD_DIR
 - ls $TRAVIS_BUILD_DIR/results
 - cat $TRAVIS_BUILD_DIR/results/idea.log
