@@ -5,6 +5,12 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -16,5 +22,5 @@ sourceSets {
 }
 
 dependencies {
-    compile fileTree(dir: 'lib', include: '*.jar')
+    compile 'com.github.MontiSecArc:msa_policies:0.7.19'
 }
