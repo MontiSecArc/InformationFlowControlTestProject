@@ -13,6 +13,6 @@ before_install:
 
 script:
 - ./gradlew clean build
-- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src"
+- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "mkdir /project/results && /opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src"
 - ls $TRAVIS_BUILD_DIR
 - ls $TRAVIS_BUILD_DIR/results
