@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="msa_policies-0.7.19">
+  <library name="msa_policies-0.7.191">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/msa_policies-0.7.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/msa_policies-0.7.191.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
