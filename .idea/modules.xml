@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SecurityClassTest.iml" filepath="$PROJECT_DIR$/.idea/modules/SecurityClassTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SecurityClassTest.iml" filepath="$PROJECT_DIR$/.idea/modules/SecurityClassTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SecurityClassTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SecurityClassTest_main.iml" group="SecurityClassTest" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SecurityClassTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SecurityClassTest_main.iml" group="SecurityClassTest" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SecurityClassTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SecurityClassTest_test.iml" group="SecurityClassTest" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SecurityClassTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SecurityClassTest_test.iml" group="SecurityClassTest" />
     </modules>
   </component>
