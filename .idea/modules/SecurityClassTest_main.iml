@@ -15,6 +15,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: com.github.MontiSecArc:msa_policies:0.7.19" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.MontiSecArc:msa_policies:0.7.19" level="application" />
   </component>
 </module>

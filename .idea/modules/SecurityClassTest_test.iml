@@ -10,7 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="SecurityClassTest_main" />
-    <orderEntry type="library" name="Gradle: com.github.MontiSecArc:msa_policies:0.7.19" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.MontiSecArc:msa_policies:0.7.19" level="application" />
   </component>
   <component name="TestModuleProperties" production-module="SecurityClassTest_main" />
 </module>
