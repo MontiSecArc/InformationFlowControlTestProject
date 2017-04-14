@@ -17,4 +17,12 @@ before_script:
 script:
 - mkdir $TRAVIS_BUILD_DIR/results
 - docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src && cp /home/developer/.IdeaIC2017.1/system/log/idea.log /project/results/idea.log"
-- xsltproc $TRAVIS_BUILD_DIR/GraphQuery.xsl $TRAVIS_BUILD_DIR/results/GraphQuery.xml -o $TRAVIS_BUILD_DIR/results/GraphQuery.xhtml
+- xsltproc $TRAVIS_BUILD_DIR/GraphQuery.xsl $TRAVIS_BUILD_DIR/results/GraphQuery.xml > $TRAVIS_BUILD_DIR/results/GraphQuery.xhtml
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: SEMcAPjA16rjIQruOcQT+CpLd8aUJ9b/V0If3ODW8HVWO01NkH91qbRb7g0q1tCDJZ8swVc8ffZxVhKr6YH3GMzw8FQojZVteqxJEDCylpeA3twiawBnG84u9deMSgkOPkd/5nljpLPMHu4oOS0Q3lvOEG4V8Izgq5//Vf5ZuPR+2Qel7QUqPKPZ8lpzjAL9buJhGrd2w+SJ6A9OVN9FgnidgR/EdD+R2JnjVUAhgU5ntlXT84rw9SePsGMoGiyEPpiQDi09hXASjwARvgzxcLZ8bUZfPW1BKz9NO+USZ4FgAxRX81nuwS46c6siFFFwSr0rJbXNTSg6L49rVK2Y7JAeQ2amUkXah/fuBQ3nCn+S1AS4LNtuyGQusS3sEpmy6PQqmtLY9Rddrh7jXB90iBEazOuNNlXGjnQzdX19cTvJxPSXr3Fmm2almUTqib8rqG51DUrKviNP9DNe9FyR08tgW1TsY2Paap/cvzojS/AQrxEBa6ZSUSOnlA2pRDwLkbHXpwnQaiTht7xHl7UHIbMNr648kcbSNdPKRAJhmHXuIjsafbhUo2AHlxrHpDRLDVtgEO46YL6mFaHI5VYNpSu6liIYlTcaqOLj6wxdTdD/OTyvKha+Kpbiw5ZDJtowVo1t7ZyVsW5495oKm1/qoJyKZLijRG75rk2AIq4HMfI= # Set in travis-ci.org dashboard
+  local_dir: $TRAVIS_BUILD_DIR/results
+  on:
+    branch: master
