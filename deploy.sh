@@ -6,8 +6,11 @@ TARGET_BRANCH="gh-pages"
 
 function doCompile {
   docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src"
+  ls $TRAVIS_BUILD_DIR/results
   xsltproc $TRAVIS_BUILD_DIR/GraphQuery.xsl $TRAVIS_BUILD_DIR/results/GraphQuery.xml > $TRAVIS_BUILD_DIR/results/GraphQuery.xhtml
+  ls $TRAVIS_BUILD_DIR/results
   find $TRAVIS_BUILD_DIR/results ! -name 'GraphQuery.xhtml' -type f -exec rm -f {} +
+  ls $TRAVIS_BUILD_DIR/results
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
