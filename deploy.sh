@@ -5,7 +5,6 @@ SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 
 function doCompile {
-  mkdir $TRAVIS_BUILD_DIR/results
   docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src"
   xsltproc $TRAVIS_BUILD_DIR/GraphQuery.xsl $TRAVIS_BUILD_DIR/results/GraphQuery.xml > $TRAVIS_BUILD_DIR/results/GraphQuery.xhtml
   find $TRAVIS_BUILD_DIR/results ! -name 'GraphQuery.xhtml' -type f -exec rm -f {} +
