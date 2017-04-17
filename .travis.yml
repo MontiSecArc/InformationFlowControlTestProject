@@ -15,9 +15,14 @@ before_script:
 - sudo apt-get install -qq -y xsltproc
 
 script:
-- bash ./deploy.sh
+- mkdir $TRAVIS_BUILD_DIR/results
+- docker run -v $TRAVIS_BUILD_DIR:/project thomasbuning/msa_intellij_docker_image /bin/sh -c "/opt/intellij/bin/inspect.sh /project /project/Default.xml /project/results -v2 -d /project/src"
+- xsltproc $TRAVIS_BUILD_DIR/GraphQuery.xsl $TRAVIS_BUILD_DIR/results/GraphQuery.xml > $TRAVIS_BUILD_DIR/results/GraphQuery.xhtml
+- find $TRAVIS_BUILD_DIR/results ! -name 'GraphQuery.xhtml' -type f -exec rm -f {} +
 
-env:
-  global:
-  - ENCRYPTION_LABEL: "a32f33bb26d2"
-  - COMMIT_AUTHOR_EMAIL: "thomas.buning@rwth-aachen.de"
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: EfsBXDCmU1u63dKdLZmWUMPoKbhrgro9ptlKos4yglkc1DS8Apbqh6VBA52yDlHDsKJ+U938fCHyHknBEcsBiIJri3LqcvmsmBYqxDg3lNPEZGAuOJjs70h2xrGhe/3JN7r/vquAi95z7TSl1uyzXHiKdmywD+cjwOWZUpvHR9lFNWbwEiZzUZM6jJuCX6WJSzmjqoMy3LqGU/Un3AeTiRSjoxf5LEmzSmFfOjtIuebHVYptmWhy2PWvZI9BGf10iPO90w1QzvvEpCQDQrmcGI6SIRNgUZbUUotLSOEsFYzGoWwxsnqtmqsun7fa3UxBAH2XvIrB0QIc8OADFpJOGiftCLoX2SJnPT6v4ilh7dJEPzo2QPKgKhKxLzSnLy9UjNWt84bQQwQnuj26OeeYgI478KRKUhVPnWyAzuSaZSeok2M0I8zJn7Oj7wDe3W+Tj7UY9t2081z4PwdlcGUAaLubiJcHgBXLdlB6+3nXB022sBi87c2zwnECScW2pFz8P8R6WiOcXVqSh52WRQP5wzBfdoFGP6W7aGqcuO2jZcfAvfBcoUUD3B/evQQy3kNEMAddVifjL7svSmcBYn1mzNrqOD2tr/xMre+5iiES5EVwFWeVoWtZRFgP98THLR38Y/0V//Aa24EiC1AAF5urv9scgsUXEG9V3W6pYtfMuNE=
+  local_dir: $TRAVIS_BUILD_DIR/results
+  overwrite: true
