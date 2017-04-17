@@ -9,8 +9,6 @@ function doCompile {
   ls $TRAVIS_BUILD_DIR/results
   xsltproc $TRAVIS_BUILD_DIR/GraphQuery.xsl $TRAVIS_BUILD_DIR/results/GraphQuery.xml > $TRAVIS_BUILD_DIR/results/GraphQuery.xhtml
   ls $TRAVIS_BUILD_DIR/results
-  find $TRAVIS_BUILD_DIR/results ! -name 'GraphQuery.xhtml' -type f -exec rm -f {} +
-  ls $TRAVIS_BUILD_DIR/results
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -34,6 +32,8 @@ doCompile
 
 # Now let's go have some fun with the cloned repo
 cd $TRAVIS_BUILD_DIR/results
+git branch -a
+
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
@@ -57,4 +57,4 @@ git branch -a
 git show-ref
 
 # Now that we're all set up, we can push.
-git push origin $TARGET_BRANCH
+git push
