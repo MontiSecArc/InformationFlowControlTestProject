@@ -9,6 +9,7 @@ function doCompile {
   ls $TRAVIS_BUILD_DIR/results
   xsltproc $TRAVIS_BUILD_DIR/GraphQuery.xsl $TRAVIS_BUILD_DIR/results/GraphQuery.xml > $TRAVIS_BUILD_DIR/results/GraphQuery.xhtml
   ls $TRAVIS_BUILD_DIR/results
+  rm *.xml
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -57,4 +58,4 @@ git branch -a
 git show-ref
 
 # Now that we're all set up, we can push.
-git push
+git push origin gh-pages
