@@ -29,7 +29,8 @@ SHA=`git rev-parse --verify HEAD`
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
 git clone $REPO $TRAVIS_BUILD_DIR/results
 cd $TRAVIS_BUILD_DIR/results
-git checkout -b $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+git branch -a
+git checkout $TARGET_BRANCH
 cd ..
 
 # Clean out existing contents
