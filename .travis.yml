@@ -23,7 +23,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: 5SOM/+bZYinvK+1QRmm9B9A859Guw6/TiVYHytZj3u00y4uyDw/HBrxgJm/03O3fd/4VG6JpVmyUUI5m+RFldEvJFOwnkVx2qeTaP7M/qqQIuuXqRFJndhAkMG0TNsJbdgE7DM5EtgZvxce2Xe/zpdsoNl6iVn6QmE3/Y5WEpcc2blrrzieDyqKcqDU29Fx5NfSHgVaNsLzr3dlNXNOzj9z8NPo7OVyyl9sZbKHMnoGzpoP0Rops1Xtzrz5L2jF1bGS26Cx4mqnv9L+/cPLZeAYMa3cozaPsjL3UQ0w29q0OssP/jVnK76YRlbwvCoWood61YJE0fws2W1WhaAHy222492pgMjpHFPPbJEkmj0XytoxKSY0aHJCGyXIOlezuSnKfCugouS6adTAljdcrXNxCJECO/ojU0oacoSJtAyJFWjCSmK33h2qk9pnv66Z7NBKWP0rXSnKWljrx/mRN+CLhW1daZDBPgNCZkXDE14QS/wwQiD2y36GIUg4Ov1Cy9Rw5Rrn0GnnbuQ3Oix/zvU8HGvNeHqnlj7hwNSPkB/QvpH3NJC0YKwLKayKwwtyu3kXBsQfGZbqfDfZsQlXn273TQuS+hubZff+hmmRBbp+CHy6XPKpu+0Uq6F5yWDdB15i9wQcVyc4KPFykaRoGAloOqmSGfK3W+TxxRwA+Zgo=
+  github_token: $GITHUB_TOKEN
   local_dir: $TRAVIS_BUILD_DIR/results
   target_branch: gh-pages
   email: thomas.buning@rwth-aachen.de
